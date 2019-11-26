@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <sys/time.h>
 #include <unistd.h>
-
+#include "self_define.h"
 int main(){
     struct timeval tv;
     gettimeofday(&tv,NULL);
@@ -49,10 +49,11 @@ void markConnStamp(conn_obj *connInfo)
 	    break;
 	}	
 #ifdef __linux__
-        taskObj->start_time =         
+        taskObj->start_time = start_time;       
 
 #else
 #endif
+	taskNode =  taskNode->next;
     }
 
 
