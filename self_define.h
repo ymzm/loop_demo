@@ -12,10 +12,16 @@ typedef enum CONN_PRTC{
 }CONN_PRTC;
 
 typedef struct task_object_t{
+#ifdef __linux
+    dlist_node_t node;
+#else
+
+#endif
 	char *send_msg;
 	int msg_length;
 	unsigned int task_period;
 	unsigned int ms_timeout;
+        unsigned long start_time;
 	int task_index;
 	char task_desc[32];
 }task_obj;
